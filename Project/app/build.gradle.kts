@@ -1,5 +1,6 @@
 plugins {
     alias(libs.plugins.android.application)
+    alias(libs.plugins.google.gms.google.services)
 }
 
 android {
@@ -40,6 +41,11 @@ dependencies {
     implementation(libs.material)
     implementation(libs.activity)
     implementation(libs.constraintlayout)
+    implementation(libs.firebase.auth)
+    implementation(libs.lifecycle.livedata.ktx)
+    implementation(libs.lifecycle.viewmodel.ktx)
+    implementation(libs.navigation.fragment)
+    implementation(libs.navigation.ui)
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
@@ -52,14 +58,18 @@ dependencies {
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
     // Retrofit Adapter cho RxJava2
-    implementation("com.squareup.retrofit2:adapter:rxjava2:2.9.0") // <-- Sửa thành adapter thay vì adapter-rxjava2 trực tiếp
+    implementation("com.squareup.retrofit2:adapter-rxjava3:2.9.0")
 
-    // RxJava2 & RxAndroid2
-    implementation("io.reactivex.rxjava2:rxjava:2.2.21")
-    implementation("io.reactivex.rxjava2:rxandroid:2.1.1")
+    // RxJava3 <-- CHÚ Ý TÊN PACKAGE MỚI
+    implementation ("io.reactivex.rxjava3:rxjava:3.1.6") // Sử dụng phiên bản 3.x.x mới nhất
+    // RxAndroid3 <-- CHÚ Ý TÊN PACKAGE MỚI
+    implementation("io.reactivex.rxjava3:rxandroid:3.0.2") // Sử dụng phiên bản 3.x.x mới nhất
 
     // Glide (Thư viện tải ảnh)
     implementation("com.github.bumptech.glide:glide:4.16.0")
 
     implementation ("com.airbnb.android:lottie:6.3.0")
+
+    implementation (libs.ssp.android)
+    implementation (libs.sdp.android)
 }

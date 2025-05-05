@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:gravity="center"
+    tools:context=".view.DangNhapActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
+        android:gravity="center"
+        android:text="Đăng nhập"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/etTaiKhoanLogin"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_50sdp"
+        android:hint="Tài khoản"
+        android:textColor="@color/black"
+        android:inputType="text"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/bg_radius_24"
+        android:padding="@dimen/_10sdp"/>
+
+    <EditText
+        android:id="@+id/etMatKhauLogin"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_50sdp"
+        android:hint="Mật khẩu"
+        android:textColor="@color/black"
+        android:inputType="textPassword"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/bg_radius_24"
+        android:padding="@dimen/_10sdp"/>
+
+    <TextView
+        android:id="@+id/btnDangNhap"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Đăng Nhập"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="32dp"
+        android:textStyle="bold"
+        android:background="@drawable/bg_radius_24"
+        android:backgroundTint="@color/color_ff931c"
+        android:padding="@dimen/_10sdp"/>
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/loadingAni"
+        android:layout_width="@dimen/_50sdp"
+        android:layout_height="@dimen/_50sdp"
+        app:lottie_rawRes="@raw/loading_ani"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        android:visibility="gone"/>
+
+    <TextView
+        android:id="@+id/tvSignUp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:textColor="#03A9F4"
+        android:gravity="center"
+        android:text="Đăng kí ngay"
+        android:textStyle="bold"/>
+</LinearLayout>
