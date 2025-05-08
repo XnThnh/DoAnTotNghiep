@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="@dimen/_10sdp"
+    android:background="@drawable/bg_radius_12">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Xác nhận xoá"
+        android:textSize="@dimen/_20ssp"
+        android:textColor="@color/red"
+        android:gravity="center"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Bạn có chắc chắn muốn xoá nhân viên này ?"
+        android:textAlignment="center"
+        android:textSize="@dimen/_15ssp"
+        android:layout_marginTop="@dimen/_10sdp"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/_10sdp">
+        <TextView
+            android:id="@+id/btnHuy"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="@dimen/_10sdp"
+            android:text="Huỷ"
+            android:background="@drawable/bg_radius_16"
+            android:textAlignment="center"
+            android:textSize="@dimen/_12ssp"
+            android:layout_marginEnd="@dimen/_50sdp"/>
+        <TextView
+            android:id="@+id/btnXoa"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="@dimen/_10sdp"
+            android:text="Xoá"
+            android:background="@drawable/bg_radius_16"
+            android:backgroundTint="@color/red"
+            android:textAlignment="center"
+            android:textSize="@dimen/_12ssp"/>
+    </LinearLayout>
+</LinearLayout>

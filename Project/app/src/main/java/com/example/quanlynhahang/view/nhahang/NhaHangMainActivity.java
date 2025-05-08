@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Menu;
+import android.widget.TextView;
 
 import com.example.quanlynhahang.R;
 import com.example.quanlynhahang.session.NhaHangSession;
@@ -46,6 +47,11 @@ public class NhaHangMainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_nha_hang_main);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
+        View headerView = navigationView.getHeaderView(0);
+        TextView tvName = headerView.findViewById(R.id.tvName);
+        TextView tvGmail = headerView.findViewById(R.id.tvGmail);
+        tvName.setText(NhaHangSession.getCurrentNhaHang().getTenNH());
+        tvGmail.setText(NhaHangSession.getCurrentNhaHang().getTaiKhoan());
     }
 
     @Override

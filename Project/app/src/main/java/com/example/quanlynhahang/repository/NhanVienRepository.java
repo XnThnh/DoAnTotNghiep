@@ -7,6 +7,7 @@ import com.example.quanlynhahang.retrofit.NhanVienAPI;
 
 import java.util.List;
 
+import io.reactivex.rxjava3.core.Completable;
 import io.reactivex.rxjava3.core.Single;
 
 public class NhanVienRepository {
@@ -34,5 +35,11 @@ public class NhanVienRepository {
     }
     public Single<NhanVien> themNhanVien(NhanVien nhanVien) {
         return nhanVienAPI.themNhanVien(nhanVien);
+    }
+    public Single<NhanVien> capNhatNhanVien(NhanVien nhanVien) {
+        return nhanVienAPI.capNhatNhanVien(nhanVien.getMaNV(), nhanVien);
+    }
+    public Completable xoaNhanVien(NhanVien nhanVien) {
+        return nhanVienAPI.xoaNhanVien(nhanVien.getMaNV());
     }
     }

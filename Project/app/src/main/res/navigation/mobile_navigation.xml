@@ -14,7 +14,7 @@
     <fragment
         android:id="@+id/nav_qlnv"
         android:name="com.example.quanlynhahang.view.nhahang.ui.QLNV.QLNVFragment"
-        android:label="@string/menu_gallery"
+        android:label="Quản Lý Nhân Viên"
         tools:layout="@layout/fragment_qlnv" />
 
     <fragment

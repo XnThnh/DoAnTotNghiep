@@ -15,7 +15,9 @@ import java.util.List;
 
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
 import io.reactivex.rxjava3.annotations.NonNull;
+import io.reactivex.rxjava3.core.CompletableObserver;
 import io.reactivex.rxjava3.disposables.CompositeDisposable;
+import io.reactivex.rxjava3.disposables.Disposable;
 import io.reactivex.rxjava3.observers.DisposableSingleObserver;
 import io.reactivex.rxjava3.schedulers.Schedulers;
 
@@ -33,6 +35,12 @@ public class QLNVViewModel extends ViewModel {
 
     private MutableLiveData<Boolean> _thanhCong = new MutableLiveData<>();
     public LiveData<Boolean> getThanhCong() {return _thanhCong;}
+
+    private MutableLiveData<Boolean> _suaThanhCong = new MutableLiveData<>();
+    public LiveData<Boolean> getSuaThanhCong() {return _suaThanhCong;}
+
+    private MutableLiveData<Boolean> _xoaThanhCong = new MutableLiveData<>();
+    public LiveData<Boolean> getXoaThanhCong() {return _xoaThanhCong;}
 
     private MutableLiveData<List<NhanVien>> _listNhanVien = new MutableLiveData<>();
     public LiveData<List<NhanVien>> getListNhanVien() {
@@ -65,6 +73,7 @@ public class QLNVViewModel extends ViewModel {
                     public void onSuccess(@NonNull NhanVien nhanVien) {
                         if(nhanVien != null){
                             _thanhCong.setValue(true);
+
                         }
                         else {
                             _thanhCong.setValue(false);
@@ -77,6 +86,48 @@ public class QLNVViewModel extends ViewModel {
                         Log.d("QLNVViewModel", "Lỗi thêm nhân viên:" + e.getMessage());
                     }
                 }));
+    }
+
+    public void suaNhanVien(NhanVien nhanVien){
+        _dangTai.setValue(true);
+        quanLyLuong.add(nhanVienRepository.capNhatNhanVien(nhanVien)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeWith(new DisposableSingleObserver<NhanVien>() {
+                    @Override
+                    public void onSuccess(@NonNull NhanVien nhanVien) {
+                        _suaThanhCong.setValue(true);
+                        _dangTai.setValue(false);
+                    }
+
+                    @Override
+                    public void onError(@NonNull Throwable e) {
+                        Log.d("QLNVViewModel", "Lỗi sửa nhân viên:" + e.getMessage());
+                        _suaThanhCong.setValue(false);
+                        _dangTai.setValue(false);
+                    }
+                }));
+    }
+
+    public void xoaNhanVien(NhanVien nhanVien){
+        _dangTai.setValue(true);
+        quanLyLuong.add(nhanVienRepository.xoaNhanVien(nhanVien)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(
+                        () -> {
+                            // onComplete
+                            _xoaThanhCong.setValue(true);
+                            _dangTai.setValue(false);
+                        },
+                        throwable -> {
+                            // onError
+                            Log.d("QLNVViewModel", "Lỗi xóa nhân viên:" + throwable.getMessage());
+                            _dangTai.setValue(false);
+                        }
+
+                )
+        );
     }
 
     public void reloadListNhanVien() {

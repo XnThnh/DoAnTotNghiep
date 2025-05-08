@@ -17,10 +17,15 @@ import java.util.ArrayList;
 public class NhanVienAdapter extends RecyclerView.Adapter<NhanVienAdapter.ViewHolder> {
     private ArrayList<NhanVien> listNhanVien;
     private Context context;
-
-    public NhanVienAdapter(ArrayList<NhanVien> listNhanVien, Context context) {
+    private ClickListener clickListener;
+    public interface ClickListener{
+        void xoaCLick(NhanVien nhanVien);
+        void suaClick(NhanVien nhanVien);
+    }
+    public NhanVienAdapter(ArrayList<NhanVien> listNhanVien, Context context, ClickListener clickListener) {
         this.listNhanVien = listNhanVien;
         this.context = context;
+        this.clickListener = clickListener;
     }
     @NonNull
     @Override
@@ -31,13 +36,18 @@ public class NhanVienAdapter extends RecyclerView.Adapter<NhanVienAdapter.ViewHo
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         NhanVien nhanVien = listNhanVien.get(position);
-        holder.itemBinding.tvMaNV.setText(String.valueOf(nhanVien.getMaNV()));
         holder.itemBinding.tvTenNV.setText(nhanVien.getTenNV());
         holder.itemBinding.tvSDT.setText(String.valueOf(nhanVien.getSdt()));
-        holder.itemBinding.tvVaiTro.setText(nhanVien.getVaiTro());
+        holder.itemBinding.tvVaiTro.setText("Nhân viên");
         if(nhanVien.getUrlAnh() != null){
             Glide.with(context).load(nhanVien.getUrlAnh()).into(holder.itemBinding.imvAnh);
         }
+        holder.itemBinding.btnXoa.setOnClickListener(view -> {
+            clickListener.xoaCLick(nhanVien);
+        });
+        holder.itemBinding.btnSua.setOnClickListener(view->{
+            clickListener.suaClick(nhanVien);
+        });
     }
 
     @Override
