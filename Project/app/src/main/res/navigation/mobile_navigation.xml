@@ -7,19 +7,31 @@
 
     <fragment
         android:id="@+id/nav_home"
-        android:name="com.example.quanlynhahang.view.nhahang.ui.home.HomeFragment"
+        android:name="com.example.quanlynhahang.view.nhahang.home.HomeFragment"
         android:label="@string/menu_home"
         tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/nav_qlnv"
-        android:name="com.example.quanlynhahang.view.nhahang.ui.QLNV.QLNVFragment"
+        android:name="com.example.quanlynhahang.view.nhahang.QuanLyNhanVien.QLNVFragment"
         android:label="Quản Lý Nhân Viên"
         tools:layout="@layout/fragment_qlnv" />
 
     <fragment
-        android:id="@+id/nav_slideshow"
-        android:name="com.example.quanlynhahang.view.nhahang.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
+        android:id="@+id/nav_qldm"
+        android:name="com.example.quanlynhahang.view.nhahang.QuanLyDanhMuc.QuanLyDanhMucFragment"
+        android:label="Quản lý danh mục"
+        tools:layout="@layout/fragment_quan_ly_danh_muc" />
+
+    <fragment
+        android:id="@+id/nav_qlb"
+        android:name="com.example.quanlynhahang.view.nhahang.QuanLyBan.QuanLyBanFragment"
+        android:label="Quản lý bàn"
+        tools:layout="@layout/fragment_quan_ly_ban" />
+    <fragment
+        android:id="@+id/nav_qlma"
+        android:name="com.example.quanlynhahang.view.nhahang.QuanLyMonAn.QuanLyMonAnFragment"
+        android:label="Quản lý món ăn"
+        tools:layout="@layout/fragment_quan_ly_mon_an" />
+
 </navigation>

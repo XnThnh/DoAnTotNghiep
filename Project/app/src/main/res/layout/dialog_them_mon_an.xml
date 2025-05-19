@@ -1,0 +1,101 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="@dimen/_10sdp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Thêm món ăn"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <ImageView
+        android:id="@+id/imvAnh"
+        android:layout_width="@dimen/_100sdp"
+        android:layout_height="@dimen/_100sdp"
+        android:layout_gravity="center_horizontal"
+        android:src="@drawable/logo_nha_hang"/>
+
+    <EditText
+        android:id="@+id/edtTenMonAn"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_50sdp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/bg_radius_24"
+        android:hint="Tên món ăn"
+        android:padding="@dimen/_10sdp"
+        android:textColor="@color/black" />
+
+    <EditText
+        android:id="@+id/edtMoTa"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_50sdp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/bg_radius_24"
+        android:hint="Mô tả"
+        android:padding="@dimen/_10sdp"
+        android:textColor="@color/black" />
+
+    <EditText
+        android:id="@+id/edtGiaMonAn"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_50sdp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/bg_radius_24"
+        android:hint="Giá"
+        android:inputType="number"
+        android:padding="@dimen/_10sdp"
+        android:textColor="@color/black" />
+
+    <Spinner
+        android:id="@+id/spnDanhMuc"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_50sdp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/bg_radius_24"
+        android:hint="Mật khẩu"
+        android:inputType="textPassword"
+        android:padding="@dimen/_10sdp"
+        android:textColor="@color/black" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/_30sdp">
+
+        <TextView
+            android:id="@+id/btnHuy"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="32dp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_radius_24"
+            android:backgroundTint="@color/color_ff931c"
+            android:padding="@dimen/_10sdp"
+            android:text="Huỷ"
+            android:textAlignment="center"
+            android:textStyle="bold"
+            android:layout_marginEnd="@dimen/_50sdp"/>
+
+        <TextView
+            android:id="@+id/btnThem"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="32dp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_radius_24"
+            android:backgroundTint="@color/color_ff931c"
+            android:padding="@dimen/_10sdp"
+            android:text="Thêm"
+            android:textAlignment="center"
+            android:textStyle="bold" />
+    </LinearLayout>
+</LinearLayout>

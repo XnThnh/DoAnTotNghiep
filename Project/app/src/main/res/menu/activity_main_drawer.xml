@@ -13,8 +13,14 @@
             android:icon="@drawable/ic_person"
             android:title="Quản lý nhân viên" />
         <item
-            android:id="@+id/nav_slideshow"
+            android:id="@+id/nav_qldm"
             android:icon="@drawable/ic_menu_slideshow"
-            android:title="@string/menu_slideshow" />
+            android:title="Quản lý danh mục" />
+        <item android:id="@+id/nav_qlb"
+            android:icon="@drawable/ic_table"
+            android:title="Quản lý bàn"/>
+        <item android:id="@+id/nav_qlma"
+            android:icon="@drawable/ic_mon_an"
+            android:title="Quản lý món ăn"/>
     </group>
 </menu>

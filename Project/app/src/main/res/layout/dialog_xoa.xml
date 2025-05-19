@@ -13,6 +13,7 @@
         android:textColor="@color/red"
         android:gravity="center"/>
     <TextView
+        android:id="@+id/tvXacNhanXoa"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Bạn có chắc chắn muốn xoá nhân viên này ?"

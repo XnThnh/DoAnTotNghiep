@@ -32,4 +32,7 @@ public interface NhanVienAPI {
     // Xoa NhanVien
     @DELETE("/nhanvien/{maNV}")
     Completable xoaNhanVien(@Path("maNV") int maNV);
+
+    @GET("/nhanvien/dangnhap/{firebaseuid}")
+    Single<NhanVien> dangNhap(@Path("firebaseuid") String firebaseuid);
 }

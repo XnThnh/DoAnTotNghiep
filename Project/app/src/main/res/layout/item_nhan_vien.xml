@@ -14,7 +14,8 @@
         android:layout_margin="@dimen/_10sdp"
         android:padding="@dimen/_15sdp"
         android:background="@drawable/bg_radius_24">
-        <ImageView
+        <com.makeramen.roundedimageview.RoundedImageView
+            app:riv_corner_radius="10dp"
             android:id="@+id/imvAnh"
             android:layout_width="@dimen/_80sdp"
             android:layout_height="@dimen/_80sdp"

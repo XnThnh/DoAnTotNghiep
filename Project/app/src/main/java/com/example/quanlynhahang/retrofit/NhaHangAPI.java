@@ -13,4 +13,6 @@ public interface NhaHangAPI {
     Single<NhaHang> dangKyNhaHang(@Body NhaHang nhaHang);
     @GET("/nhahang/dangnhap") // <-- Giả sử backend có endpoint này
     Single<NhaHang> dangNhapNhaHang(@Query("firebaseuid") String firebaseuid);
+    @GET("/nhahang/getbyid/{id}")
+    Single<NhaHang> getNhaHang(@Query("id") int id);
 }

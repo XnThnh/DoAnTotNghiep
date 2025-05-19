@@ -30,6 +30,9 @@ public class NhanVienRepository {
     public NhanVienRepository(NhanVienAPI nhanVienAPI) {
         this.nhanVienAPI = nhanVienAPI;
     }
+    public Single<NhanVien> dangNhap(String firebaseuid) {
+        return nhanVienAPI.dangNhap(firebaseuid);
+    }
     public Single<List<NhanVien>> layDanhSachNV(int manh) {
         return nhanVienAPI.getNhanVienByNhaHang(manh);
     }

@@ -10,7 +10,6 @@ import android.widget.TextView;
 import com.example.quanlynhahang.R;
 import com.example.quanlynhahang.session.NhaHangSession;
 import com.example.quanlynhahang.view.DangNhapActivity;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.annotation.NonNull;
@@ -41,7 +40,7 @@ public class NhaHangMainActivity extends AppCompatActivity {
         DrawerLayout drawer = binding.drawerLayout;
         NavigationView navigationView = binding.navView;
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home, R.id.nav_qlnv, R.id.nav_slideshow)
+                R.id.nav_home, R.id.nav_qlnv, R.id.nav_qldm,R.id.nav_qlb,R.id.nav_qlma)
                 .setOpenableLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_nha_hang_main);

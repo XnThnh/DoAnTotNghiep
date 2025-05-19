@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -15,6 +16,9 @@
         android:theme="@style/Theme.QuanLyNhaHang"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
+        <activity
+            android:name=".view.nhanvien.NhanVienMainActivity"
+            android:exported="false" />
         <activity
             android:name=".view.nhahang.NhaHangMainActivity"
             android:exported="false"
@@ -30,7 +34,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".view.DangKyActivity"
+            android:name=".view.nhahang.DangKy.DangKyActivity"
             android:exported="false" />
     </application>
 

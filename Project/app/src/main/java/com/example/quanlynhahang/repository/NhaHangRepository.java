@@ -36,4 +36,8 @@ public class NhaHangRepository {
     public Single<NhaHang> dangNhapNhaHang(String nhaHangUID){
         return nhaHangAPI.dangNhapNhaHang(nhaHangUID);
     }
+
+    public Single<NhaHang> getNhaHang(int id){
+        return nhaHangAPI.getNhaHang(id);
+    }
 }

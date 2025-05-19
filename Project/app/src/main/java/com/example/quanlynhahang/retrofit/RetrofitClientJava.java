@@ -23,4 +23,7 @@ public class RetrofitClientJava {
         return getInstance().create(NhaHangAPI.class);
     }
     public static NhanVienAPI getNhanVienAPI() {return getInstance().create(NhanVienAPI.class);}
+    public static DanhMucAPI getDanhMucAPI() {return getInstance().create(DanhMucAPI.class);}
+    public static BanAPI getBanAPI() {return getInstance().create(BanAPI.class);}
+    public static MonAnAPI getMonAnAPI() {return getInstance().create(MonAnAPI.class);}
 }
