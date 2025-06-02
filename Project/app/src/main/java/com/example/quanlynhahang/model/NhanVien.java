@@ -106,4 +106,19 @@ public class NhanVien {
     public void setNhaHang(NhaHang nhaHang) {
         this.nhaHang = nhaHang;
     }
+
+    @Override
+    public String toString() {
+        return "NhanVien{" +
+                "maNV=" + maNV +
+                ", firebaseUID='" + firebaseUID + '\'' +
+                ", tenNV='" + tenNV + '\'' +
+                ", sdt=" + sdt +
+                ", vaiTro='" + vaiTro + '\'' +
+                ", taiKhoan='" + taiKhoan + '\'' +
+                ", matkhau='" + matkhau + '\'' +
+                ", urlAnh='" + urlAnh + '\'' +
+                ", nhaHang=" + nhaHang +
+                '}';
+    }
 }

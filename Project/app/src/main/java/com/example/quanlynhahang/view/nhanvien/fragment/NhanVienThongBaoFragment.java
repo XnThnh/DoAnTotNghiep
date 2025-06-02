@@ -1,4 +1,4 @@
-package com.example.quanlynhahang.view.nhanvien;
+package com.example.quanlynhahang.view.nhanvien.fragment;
 
 import android.os.Bundle;
 

@@ -14,7 +14,7 @@ import com.example.quanlynhahang.session.NhaHangSession;
 import com.example.quanlynhahang.session.NhanVienSession;
 import com.example.quanlynhahang.view.nhahang.DangKy.DangKyActivity;
 import com.example.quanlynhahang.view.nhahang.NhaHangMainActivity;
-import com.example.quanlynhahang.view.nhanvien.NhanVienMainActivity;
+import com.example.quanlynhahang.view.nhanvien.activity.NhanVienMainActivity;
 import com.example.quanlynhahang.viewmodel.nhanvien.DangNhapViewModel;
 import com.example.quanlynhahang.viewmodel.quanly.dangnhap.DangNhapNhaHangVM;
 import com.google.firebase.auth.FirebaseAuth;
@@ -72,6 +72,7 @@ public class DangNhapActivity extends AppCompatActivity {
         });
 
         implementLoadingAnimation();
+
         implementDangNhap();
         implementNhaHangSession();
 
@@ -84,6 +85,7 @@ public class DangNhapActivity extends AppCompatActivity {
             else binding.loadingAni.setVisibility(View.GONE);
         });
     }
+
     private void implementDangNhap(){
         nhaHangViewModel.getDangNhapThanhCong().observe(this,thanhcong ->{
             if(thanhcong){
@@ -96,6 +98,7 @@ public class DangNhapActivity extends AppCompatActivity {
             else Toast.makeText(DangNhapActivity.this,"Dang nhap that bai",Toast.LENGTH_SHORT).show();
         });
     }
+
     private void implementNhaHangSession(){
         nhaHangViewModel.getNhaHangDaDangNhap().observe(this,nhaHang ->{
             if(nhaHang != null){
@@ -121,7 +124,9 @@ public class DangNhapActivity extends AppCompatActivity {
 
     private void implementNhanVienSession(){
         nhanVienViewModel.getNhanVienDaDangNhap().observe(this,nhanVien ->{
-            NhanVienSession.setNhanVien(this,nhanVien);
+            if(nhanVien != null){
+                NhanVienSession.setNhanVien(this,nhanVien);
+            }
         });
     }
 }

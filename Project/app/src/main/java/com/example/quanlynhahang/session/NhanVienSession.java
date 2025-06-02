@@ -15,6 +15,11 @@ public class NhanVienSession {
     public static void setNhanVien(Context context,NhanVien nv){
         SharedPreferences prefs = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
+
+        nhanVien = nv;
+        nh = nv.getNhaHang();
+
+
         editor.putInt("maNV",nv.getMaNV());
         editor.putString("firebaseUID",nv.getFirebaseUID());
         editor.putString("tenNV",nv.getTenNV());
@@ -24,14 +29,30 @@ public class NhanVienSession {
         editor.putString("taiKhoan",nv.getTaiKhoan());
         editor.putString("matKhau",nv.getMatkhau());
         editor.putInt("maNH",nv.getNhaHang().getMaNH());
+
+        editor.putInt("maNH", nh.getMaNH());
+        editor.putString("firebaseUIDNH", nh.getFirebaseUID());
+        editor.putString("tenNH", nh.getTenNH());
+        editor.putString("diaChiNH", nh.getDiaChi());
+        editor.putString("taiKhoanNH", nh.getTaiKhoan());
+        editor.putString("matKhauNH", nh.getMatKhau());
+        editor.putInt("sdtNH", nh.getSdt());
         editor.apply();
-        nhanVien = nv;
-        nh = nhanVien.getNhaHang();
+
+
     }
 
     public static NhanVien loadFromPrefs(Context context){
         SharedPreferences prefs = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
         int maNV = prefs.getInt("maNV", -1);
+        nh = new NhaHang(
+                prefs.getInt("maNH",0),
+                prefs.getString("firebaseUIDNH", ""),
+                prefs.getString("tenNH", ""),prefs.getString("diaChiNH", ""),
+                prefs.getString("taiKhoanNH", ""),
+                prefs.getString("matKhauNH", ""),
+                prefs.getInt("sdtNH", 0)
+        );
         if (maNV == -1) return null;
         else nhanVien = new NhanVien(prefs.getInt("maNV", -1),
                 prefs.getString("firebaseUID", ""),

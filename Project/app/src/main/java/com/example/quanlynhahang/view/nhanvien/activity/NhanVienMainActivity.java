@@ -1,19 +1,17 @@
-package com.example.quanlynhahang.view.nhanvien;
+package com.example.quanlynhahang.view.nhanvien.activity;
 
 import android.os.Bundle;
 import android.widget.LinearLayout;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 import androidx.fragment.app.Fragment;
 
 import com.example.quanlynhahang.R;
 import com.example.quanlynhahang.adapter.NhanVienMainAdapter;
 import com.example.quanlynhahang.databinding.ActivityNhanVienMainBinding;
-import com.example.quanlynhahang.session.NhanVienSession;
+import com.example.quanlynhahang.view.nhanvien.fragment.NhanVienHomeFragment;
+import com.example.quanlynhahang.view.nhanvien.fragment.NhanVienTaiKhoanFragment;
+import com.example.quanlynhahang.view.nhanvien.fragment.NhanVienThongBaoFragment;
 
 import java.util.ArrayList;
 

@@ -95,4 +95,17 @@ public class NhaHang {
     public void setSdt(int sdt) {
         this.sdt = sdt;
     }
+
+    @Override
+    public String toString() {
+        return "NhaHang{" +
+                "maNH=" + maNH +
+                ", firebaseUID='" + firebaseUID + '\'' +
+                ", tenNH='" + tenNH + '\'' +
+                ", diaChi='" + diaChi + '\'' +
+                ", taiKhoan='" + taiKhoan + '\'' +
+                ", matKhau='" + matKhau + '\'' +
+                ", sdt=" + sdt +
+                '}';
+    }
 }

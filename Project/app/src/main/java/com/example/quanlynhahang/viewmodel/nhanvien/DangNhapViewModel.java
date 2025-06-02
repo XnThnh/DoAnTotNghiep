@@ -1,5 +1,7 @@
 package com.example.quanlynhahang.viewmodel.nhanvien;
 
+import android.util.Log;
+
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
@@ -47,6 +49,7 @@ public class DangNhapViewModel extends ViewModel {
                                     if(nhanVien != null){
                                         _dangNhapThanhCong.setValue(null);
                                         _nhanVienDaDangNhap.setValue(nhanVien);
+                                        Log.d("TAG", "dang nhap view model: "+nhanVien.toString());
                                     }
                                     else{
                                         _dangNhapThanhCong.setValue("Đăng nhập thất bại");
@@ -60,10 +63,12 @@ public class DangNhapViewModel extends ViewModel {
                                 public void onError(@NonNull Throwable e) {
                                     _dangTai.setValue(false);
                                     _dangNhapThanhCong.setValue(e.getMessage());
+                                    mAuth.signOut();
                                 }
                             }));
                 }).addOnFailureListener(errorMessage ->{
                     _dangNhapThanhCong.setValue(errorMessage.getMessage());
+                    _dangTai.setValue(false);
                 });
     }
 
