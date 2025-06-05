@@ -5,7 +5,7 @@ import java.time.LocalDateTime;
 public class HoaDon {
 
     private int id;
-    private LocalDateTime thoiGian;
+    private String thoiGian;
     private double tongTien;
     private String phuongThuc;
     private DonHang donHang;
@@ -15,7 +15,7 @@ public class HoaDon {
     public HoaDon() {
     }
 
-    public HoaDon(int id, LocalDateTime thoiGian, double tongTien, String phuongThuc, DonHang donHang, NhanVien nhanVien, NhaHang nhaHang) {
+    public HoaDon(int id, String thoiGian, double tongTien, String phuongThuc, DonHang donHang, NhanVien nhanVien, NhaHang nhaHang) {
         this.id = id;
         this.thoiGian = thoiGian;
         this.tongTien = tongTien;
@@ -33,11 +33,11 @@ public class HoaDon {
         this.id = id;
     }
 
-    public LocalDateTime getThoiGian() {
+    public String getThoiGian() {
         return thoiGian;
     }
 
-    public void setThoiGian(LocalDateTime thoiGian) {
+    public void setThoiGian(String thoiGian) {
         this.thoiGian = thoiGian;
     }
 
@@ -79,5 +79,18 @@ public class HoaDon {
 
     public void setNhaHang(NhaHang nhaHang) {
         this.nhaHang = nhaHang;
+    }
+
+    @Override
+    public String toString() {
+        return "HoaDon{" +
+                "id=" + id +
+                ", thoiGian='" + thoiGian + '\'' +
+                ", tongTien=" + tongTien +
+                ", phuongThuc='" + phuongThuc + '\'' +
+                ", donHang=" + donHang +
+                ", nhanVien=" + nhanVien +
+                ", nhaHang=" + nhaHang +
+                '}';
     }
 }

@@ -21,22 +21,30 @@ import com.example.quanlynhahang.utils.Param;
 
 import com.example.quanlynhahang.view.nhanvien.fragment.DonHangFragment;
 import com.example.quanlynhahang.view.nhanvien.fragment.OrderFragment;
+import com.example.quanlynhahang.viewmodel.nhanvien.OrderViewModel;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 
 public class OrderActivity extends AppCompatActivity {
     private static final NhaHang nhaHang = NhanVienSession.getNhanVien().getNhaHang();
     private static final String nhaHangID = nhaHang.getMaNH() + "_" + nhaHang.getTenNH();
-
+    private OrderViewModel viewModel;
     private ActivityOrderBinding binding;
     private Intent getData;
     private String getRef;
     private DatabaseReference dbRef;
     private ArrayList<Fragment> listFragment = new ArrayList<>();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +53,7 @@ public class OrderActivity extends AppCompatActivity {
         binding = ActivityOrderBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         getData = getIntent();
+        viewModel = new OrderViewModel();
         getRef = getData.getStringExtra("maBan");
         listFragment.add(OrderFragment.newInstance(getRef));
         listFragment.add(DonHangFragment.newInstance(getRef));
@@ -91,9 +100,32 @@ public class OrderActivity extends AppCompatActivity {
                finish();
            }
            else if(binding.viewPager.getCurrentItem() == 1){
-               Toast.makeText(this, "Thanh toans nha ", Toast.LENGTH_SHORT).show();
+               DatabaseReference ref = FirebaseDatabase.getInstance(Param.firebaseURL).getReference("order")
+                       .child(NhanVienSession.getNhanVien().getNhaHang().getMaNH() + "_" + NhanVienSession.getNhanVien().getNhaHang().getTenNH())
+                       .child(getRef);
+               ref.child("maDonHang").get().addOnSuccessListener(dataSnapshot -> {
+                   if(dataSnapshot.exists() && !Objects.equals(dataSnapshot.getValue(), "0")){
+                        Intent intent = new Intent(this,HoaDonActivity.class);
+                        intent.putExtra("maDonHang",Integer.parseInt(String.valueOf(dataSnapshot.getValue())));
+                        intent.putExtra("maBan",getRef);
+                        startActivity(intent);
+                   }
+                   else Toast.makeText(OrderActivity.this, "Không có đơn hàng nào", Toast.LENGTH_SHORT).show();
+               }).addOnFailureListener(e -> Toast.makeText(OrderActivity.this, "Lỗi " + e.getMessage(), Toast.LENGTH_SHORT).show());
            }
         });
+        observeTaoHoaDon();
     }
+
+    private void observeTaoHoaDon(){
+        viewModel.getTaoHoaDon().observe(this,trangThai ->{
+            if(trangThai == null){
+                Toast.makeText(OrderActivity.this, "Thanh toan thành công", Toast.LENGTH_SHORT).show();
+                finish();
+            }
+            else Toast.makeText(OrderActivity.this, "Thanh toan loi", Toast.LENGTH_SHORT).show();
+        });
+    }
+
 
 }

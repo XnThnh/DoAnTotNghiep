@@ -15,6 +15,7 @@ import com.example.quanlynhahang.model.MonAnTrongDonHang;
 import com.example.quanlynhahang.utils.Param;
 
 import java.util.List;
+import java.util.Locale;
 
 public class DonHangAdapter extends RecyclerView.Adapter<DonHangAdapter.ViewHolder>{
     private List<MonAnTrongDonHang> dsMonAn;
@@ -36,10 +37,10 @@ public class DonHangAdapter extends RecyclerView.Adapter<DonHangAdapter.ViewHold
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         MonAnTrongDonHang monAn = dsMonAn.get(position);
         holder.binding.tvTenMonAn.setText(monAn.getMonAn().getTenMonAn());
-        holder.binding.tvGia.setText(String.format("%,d",monAn.getMonAn().getGiaMonAn()));
+        holder.binding.tvGia.setText(String.format(Locale.getDefault(),"%,d",monAn.getMonAn().getGiaMonAn()));
         holder.binding.tvSoLuong.setText(Integer.toString(monAn.getSoLuong()));
         Glide.with(context).asBitmap().load(Param.URL + "/" + monAn.getMonAn().getUrlAnh()).into(holder.binding.imvAnh);
-        holder.binding.tvTongTien.setText(String.format("%,d",monAn.getMonAn().getGiaMonAn() * monAn.getSoLuong()));
+        holder.binding.tvTongTien.setText(String.format(Locale.getDefault(),"%,d",monAn.getMonAn().getGiaMonAn() * monAn.getSoLuong()));
     }
 
     @Override

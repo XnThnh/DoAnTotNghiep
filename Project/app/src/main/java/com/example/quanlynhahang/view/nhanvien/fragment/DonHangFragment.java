@@ -1,7 +1,6 @@
 package com.example.quanlynhahang.view.nhanvien.fragment;
 
 import android.annotation.SuppressLint;
-import android.app.Dialog;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -12,23 +11,17 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
 import android.widget.Toast;
 
 import com.example.quanlynhahang.R;
-import com.example.quanlynhahang.adapter.DanhSachMonAnDaOrderAdapter;
-import com.example.quanlynhahang.adapter.DanhSachMonAnOrderAdapter;
 import com.example.quanlynhahang.adapter.DonHangAdapter;
-import com.example.quanlynhahang.databinding.DialogLaydsVaThemMonBinding;
 import com.example.quanlynhahang.databinding.FragmentDonHangBinding;
-import com.example.quanlynhahang.model.MonAn;
-import com.example.quanlynhahang.model.MonAnFirebase;
+
 import com.example.quanlynhahang.model.MonAnTrongDonHang;
 import com.example.quanlynhahang.model.NhaHang;
 import com.example.quanlynhahang.session.NhanVienSession;
 import com.example.quanlynhahang.utils.Param;
 import com.example.quanlynhahang.viewmodel.nhanvien.DonHangViewModel;
-import com.example.quanlynhahang.viewmodel.nhanvien.OrderViewModel;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -36,9 +29,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 
 public class DonHangFragment extends Fragment {
@@ -85,7 +76,6 @@ public class DonHangFragment extends Fragment {
         donHangViewModel.dsMonAnTrongDonHang().observe(getViewLifecycleOwner(),list ->{
             if(list == null){
                 Toast.makeText(requireContext(), "Lỗi lấy danh sách món ăn", Toast.LENGTH_SHORT).show();
-                return;
             }
             else {
                 dsMonAn.clear();
@@ -105,7 +95,6 @@ public class DonHangFragment extends Fragment {
         return tongTien;
     }
 
-
     private void layDSMonAnTuFirebase() {
         dbRef.addValueEventListener(new ValueEventListener() {
             @Override
@@ -124,7 +113,7 @@ public class DonHangFragment extends Fragment {
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(requireContext(), "Lỗi lấy danh sách món ăn " + error.getMessage(), Toast.LENGTH_SHORT).show();
+                Log.d("DonHangFragment","DonHangFragment onCancel" + error.getMessage());
             }
         });
     }

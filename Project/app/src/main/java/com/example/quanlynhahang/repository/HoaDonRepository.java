@@ -27,7 +27,7 @@ public class HoaDonRepository {
         return instance;
     }
 
-    public Single<HoaDon> taoHoaDon(int maDonHang, int maNhanVien, int maNhaHang, double tongTien, String phuongThuc) {
+    public Single<HoaDon> taoHoaDon(int maDonHang, int maNhanVien, int maNhaHang, int tongTien, String phuongThuc) {
         return hoaDonAPI.taoHoaDon(maDonHang, maNhanVien, maNhaHang, tongTien, phuongThuc);
     }
 }

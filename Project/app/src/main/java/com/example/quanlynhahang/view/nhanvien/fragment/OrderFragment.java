@@ -92,7 +92,7 @@ public class OrderFragment extends Fragment {
     }
 
     private void xacNhanOrderVaThemMonAnVaoDon() {
-        DatabaseReference ref = FirebaseDatabase.getInstance(Param.firebaseURL).getReference("order").child(nhaHangID).child(getRef).child("dsMonAn");
+        DatabaseReference ref = FirebaseDatabase.getInstance(Param.firebaseURL).getReference("order").child(nhaHangID).child(getRef);
         ref.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {

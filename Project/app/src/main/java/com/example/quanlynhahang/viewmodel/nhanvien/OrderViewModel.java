@@ -7,10 +7,14 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.example.quanlynhahang.model.DonHang;
+import com.example.quanlynhahang.model.HoaDon;
 import com.example.quanlynhahang.model.MonAn;
 import com.example.quanlynhahang.model.MonAnFirebase;
+import com.example.quanlynhahang.model.MonAnTrongDonHang;
 import com.example.quanlynhahang.repository.DonHangRepository;
+import com.example.quanlynhahang.repository.HoaDonRepository;
 import com.example.quanlynhahang.repository.MonAnRepository;
+import com.example.quanlynhahang.view.nhanvien.fragment.DonHangFragment;
 
 import java.util.List;
 
@@ -24,6 +28,7 @@ import io.reactivex.rxjava3.schedulers.Schedulers;
 public class OrderViewModel extends ViewModel {
     private MonAnRepository monAnRepository;
     private DonHangRepository donHangRepository;
+
     private CompositeDisposable quanLyLuong = new CompositeDisposable();
 
     public OrderViewModel() {
@@ -32,6 +37,7 @@ public class OrderViewModel extends ViewModel {
     }
 
     private MutableLiveData<List<MonAn>> dsMonAn = new MutableLiveData<>();
+
     public LiveData<List<MonAn>> getDsMonAn(int maNH) {
 
         quanLyLuong.add(monAnRepository.layDSMonAnTheoNhaHang(maNH)
@@ -40,7 +46,7 @@ public class OrderViewModel extends ViewModel {
                 .subscribeWith(new DisposableSingleObserver<List<MonAn>>() {
                     @Override
                     public void onSuccess(@NonNull List<MonAn> monAns) {
-                        if(monAns != null){
+                        if (monAns != null) {
                             dsMonAn.setValue(monAns);
                         }
                     }
@@ -56,18 +62,20 @@ public class OrderViewModel extends ViewModel {
     }
 
     private MutableLiveData<DonHang> _taoDonHangVaThemMonAn = new MutableLiveData<>();
+
     public LiveData<DonHang> getTaoDonHangVaThemMonAn() {
         return _taoDonHangVaThemMonAn;
     }
 
-    public void taoDonHangVaThemMonAn(int manv, int maBan, List<MonAnFirebase> dsMonAn){
-        quanLyLuong.add(donHangRepository.taoDonHangVaThemMon(manv,maBan,dsMonAn)
+
+    public void taoDonHangVaThemMonAn(int manv, int maBan, List<MonAnFirebase> dsMonAn) {
+        quanLyLuong.add(donHangRepository.taoDonHangVaThemMon(manv, maBan, dsMonAn)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeWith(new DisposableSingleObserver<DonHang>() {
                     @Override
                     public void onSuccess(@NonNull DonHang donHang) {
-                        if(donHang != null){
+                        if (donHang != null) {
                             _taoDonHangVaThemMonAn.setValue(donHang);
                         }
                     }
@@ -79,5 +87,14 @@ public class OrderViewModel extends ViewModel {
                     }
                 }));
     }
+
+    private MutableLiveData<String> _taoHoaDon = new MutableLiveData<>();
+
+    public LiveData<String> getTaoHoaDon() {
+        return _taoHoaDon;
+    }
+
+
+
 
 }
