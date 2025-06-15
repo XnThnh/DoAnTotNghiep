@@ -11,7 +11,7 @@ import com.example.quanlynhahang.adapter.NhanVienMainAdapter;
 import com.example.quanlynhahang.databinding.ActivityNhanVienMainBinding;
 import com.example.quanlynhahang.view.nhanvien.fragment.NhanVienHomeFragment;
 import com.example.quanlynhahang.view.nhanvien.fragment.NhanVienTaiKhoanFragment;
-import com.example.quanlynhahang.view.nhanvien.fragment.NhanVienThongBaoFragment;
+import com.example.quanlynhahang.view.nhanvien.fragment.NhanVienLichSuFragment;
 
 import java.util.ArrayList;
 
@@ -28,7 +28,7 @@ public class NhanVienMainActivity extends AppCompatActivity {
 
         ArrayList<Fragment> listFragment = new ArrayList<>();
         listFragment.add(new NhanVienHomeFragment());
-        listFragment.add(new NhanVienThongBaoFragment());
+        listFragment.add(new NhanVienLichSuFragment());
         listFragment.add(new NhanVienTaiKhoanFragment());
 
         adapter = new NhanVienMainAdapter(this,listFragment);
@@ -46,7 +46,7 @@ public class NhanVienMainActivity extends AppCompatActivity {
 
     private void setMenuCheck(LinearLayout layout){
         binding.menuBar.icHome.setImageResource(R.drawable.ic_home);
-        binding.menuBar.icThongBao.setImageResource(R.drawable.ic_home);
+        binding.menuBar.icThongBao.setImageResource(R.drawable.ic_receipt);
         binding.menuBar.icPerson.setImageResource(R.drawable.ic_person);
 
        binding.menuBar.textHome.setTextColor(getResources().getColor(R.color.black));
@@ -62,7 +62,7 @@ public class NhanVienMainActivity extends AppCompatActivity {
         }
         else if(layout.getId() == R.id.btnThongBao){
             binding.viewPager.setCurrentItem(1);
-            binding.menuBar.icThongBao.setImageResource(R.drawable.ic_home_selected);
+            binding.menuBar.icThongBao.setImageResource(R.drawable.ic_receipt_selected);
             binding.menuBar.textThongBao.setTextColor(getResources().getColor(R.color.color_ff931c));
         }
         else{

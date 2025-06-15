@@ -26,26 +26,27 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recView"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_350sdp"
+        android:layout_height="0dp"
         android:layout_margin="@dimen/_10sdp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvHoaDon"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         tools:listitem="@layout/layout_item_mon_an_don_hang" />
 
     <LinearLayout
         android:id="@+id/linearLayout3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginHorizontal="@dimen/_10sdp"
         android:background="@drawable/bg_radius_24"
         android:orientation="horizontal"
+        android:layout_marginBottom="@dimen/_10sdp"
         android:padding="@dimen/_10sdp"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout4"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginHorizontal="@dimen/_10sdp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/recView">
+        app:layout_constraintStart_toStartOf="parent">
 
         <TextView
             android:layout_width="wrap_content"
@@ -64,7 +65,7 @@
             android:layout_weight="1"
             android:fontFamily="@font/sf_pro_display_600"
             android:includeFontPadding="false"
-            android:text="100000000"
+            android:text=""
             android:textAlignment="textEnd"
             android:textColor="@color/black"
             android:textSize="@dimen/_15ssp" />
@@ -83,38 +84,36 @@
         android:id="@+id/linearLayout4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@id/btnXacNhan"
+        android:layout_marginHorizontal="@dimen/_10sdp"
+        android:layout_marginBottom="@dimen/_5sdp"
+        android:background="@drawable/bg_radius_24"
+        android:orientation="horizontal"
+        android:padding="@dimen/_10sdp"
+        app:layout_constraintBottom_toTopOf="@+id/btnXacNhan"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
+        app:layout_constraintStart_toStartOf="parent">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Chọn phương thức thanh toán" />
+            android:fontFamily="@font/sf_pro_display_600"
+            android:includeFontPadding="false"
+            android:text="Trạng thái: "
+            android:textColor="@color/black"
+            android:textSize="@dimen/_15ssp" />
 
-        <RadioGroup
-            android:id="@+id/rgPhuongThuc"
-            android:layout_width="wrap_content"
+        <TextView
+            android:id="@+id/tvTrangThai"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:layout_weight="1"
+            android:fontFamily="@font/sf_pro_display_600"
+            android:includeFontPadding="false"
+            android:textAlignment="textEnd"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_15ssp" />
 
-            <RadioButton
-                android:id="@+id/rbTienMat"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:checked="true"
-                android:text="Tiền mặt" />
-
-            <RadioButton
-                android:id="@+id/rbChuyenKhoan"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_30sdp"
-                android:text="Chuyển khoản" />
-        </RadioGroup>
     </LinearLayout>
 
     <TextView
@@ -122,15 +121,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/_10sdp"
+        android:layout_marginHorizontal="@dimen/_10sdp"
         android:background="@drawable/bg_radius_24"
         android:backgroundTint="@color/color_ff931c"
         android:fontFamily="@font/sf_pro_display_600"
         android:includeFontPadding="false"
         android:padding="@dimen/_10sdp"
-        android:text="Xác nhận thanh toán"
+        android:text="Tạo QR"
         android:textAlignment="center"
         android:textSize="@dimen/_15ssp"
-        android:layout_marginHorizontal="@dimen/_10sdp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

@@ -40,7 +40,7 @@ public class NhaHangMainActivity extends AppCompatActivity {
         DrawerLayout drawer = binding.drawerLayout;
         NavigationView navigationView = binding.navView;
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home, R.id.nav_qlnv, R.id.nav_qldm,R.id.nav_qlb,R.id.nav_qlma)
+                R.id.nav_home, R.id.nav_qlnv, R.id.nav_qldm,R.id.nav_qlb,R.id.nav_qlma,R.id.nav_hoa_don)
                 .setOpenableLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_nha_hang_main);

@@ -17,6 +17,12 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".view.nhahang.HoaDon.ChiTietHoaDonNHActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.nhanvien.activity.ChiTietHoaDonActivity"
+            android:exported="false" />
+        <activity
             android:name=".view.nhanvien.activity.HoaDonActivity"
             android:exported="false" />
         <activity

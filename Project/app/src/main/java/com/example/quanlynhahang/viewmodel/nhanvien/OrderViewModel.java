@@ -94,6 +94,29 @@ public class OrderViewModel extends ViewModel {
         return _taoHoaDon;
     }
 
+    private MutableLiveData<String> _themMonAn = new MutableLiveData<>();
+
+    public LiveData<String> getThemMonAn() {
+        return _themMonAn;
+    }
+
+    public void themMonAn(int maDonHang,List<MonAnFirebase> dsMonAn){
+        quanLyLuong.add(donHangRepository.themMonVaoDon(maDonHang, dsMonAn)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeWith(new DisposableSingleObserver<DonHang>() {
+                    @Override
+                    public void onSuccess(@NonNull DonHang donHang) {
+                        _themMonAn.setValue(null);
+                    }
+
+                    @Override
+                    public void onError(@NonNull Throwable e) {
+                        _themMonAn.setValue("Lỗi thêm món vào đơn " + e.getMessage());
+                    }
+                }));
+    }
+
 
 
 

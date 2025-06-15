@@ -89,6 +89,7 @@ public class OrderFragment extends Fragment {
         });
 
         observeTaoDonHangVaThemMon();
+        observerThemMonAn();
     }
 
     private void xacNhanOrderVaThemMonAnVaoDon() {
@@ -104,7 +105,8 @@ public class OrderFragment extends Fragment {
                         orderViewModel.taoDonHangVaThemMonAn(id,maBan,dsMonAn);
                     }
                     else {
-
+                        int maDonHang = Integer.parseInt(String.valueOf(maDonHangSnap.getValue()));
+                        orderViewModel.themMonAn(maDonHang,dsMonAn);
                     }
                 }
             }
@@ -224,7 +226,19 @@ public class OrderFragment extends Fragment {
                 DatabaseReference ref = FirebaseDatabase.getInstance(Param.firebaseURL).getReference("order").child(nhaHangID).child(getRef);
                 ref.child("maDonHang").setValue(donHang.getMaDonHang());
                 Toast.makeText(requireContext(), "Tạo đơn hàng thành công", Toast.LENGTH_SHORT).show();
+                ref.child("dsMonAn").removeValue();
             }
+        });
+    }
+
+    private void observerThemMonAn(){
+        orderViewModel.getThemMonAn().observe(getViewLifecycleOwner(),ketQua ->{
+            if(ketQua == null){
+                DatabaseReference ref = FirebaseDatabase.getInstance(Param.firebaseURL).getReference("order").child(nhaHangID).child(getRef);
+                Toast.makeText(requireContext(), "Thêm món thành công", Toast.LENGTH_SHORT).show();
+                ref.child("dsMonAn").removeValue();
+            }
+            else Toast.makeText(requireContext(), "Lỗi thêm món " + ketQua, Toast.LENGTH_SHORT).show();
         });
     }
 

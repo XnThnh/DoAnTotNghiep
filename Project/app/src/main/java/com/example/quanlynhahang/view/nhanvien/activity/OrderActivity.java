@@ -114,7 +114,7 @@ public class OrderActivity extends AppCompatActivity {
                }).addOnFailureListener(e -> Toast.makeText(OrderActivity.this, "Lỗi " + e.getMessage(), Toast.LENGTH_SHORT).show());
            }
         });
-        observeTaoHoaDon();
+        //observeTaoHoaDon();
     }
 
     private void observeTaoHoaDon(){

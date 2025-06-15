@@ -1,5 +1,6 @@
 package com.example.quanlynhahang.view.nhanvien.activity;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.RadioGroup;
@@ -16,6 +17,7 @@ import com.bumptech.glide.Glide;
 import com.example.quanlynhahang.R;
 import com.example.quanlynhahang.adapter.DonHangAdapter;
 import com.example.quanlynhahang.databinding.ActivityHoaDonBinding;
+import com.example.quanlynhahang.databinding.DialogQrThanhToanBinding;
 import com.example.quanlynhahang.model.MonAnTrongDonHang;
 import com.example.quanlynhahang.model.NhaHang;
 import com.example.quanlynhahang.session.NhanVienSession;
@@ -76,18 +78,10 @@ public class HoaDonActivity extends AppCompatActivity {
         binding.btnXacNhan.setOnClickListener(view ->{
             viewModel.taoHoaDon(maDonHang, NhanVienSession.getNhanVien().getMaNV(), nhaHang.getMaNH(), phuongThuc);
             if(phuongThuc.equals(Param.TIEN_MAT)){
-                dbRef.removeValue();
-                dbRef = FirebaseDatabase.getInstance(Param.firebaseURL).getReference("ban").child(nhaHangID+"_dsBan").child(maBan);
-                dbRef.child("trangThai").setValue(Param.TRONG);
-                dbRef.child("maNV").setValue("");
-                Toast.makeText(this,"Thanh toán thành công",Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(this, NhanVienMainActivity.class));
-                finish();
+                initHoanThanhThanhToan("Thanh toán thành công");
             }
             else {
-                String tongTien = binding.tvTongTien.getText().toString();
-                String url = Param.firebaseURL;
-                Glide.with(this).asBitmap().load(url).into(binding.imvQR);
+                initThanhToanBangQR();
             }
         });
         initTongTien();
@@ -112,5 +106,31 @@ public class HoaDonActivity extends AppCompatActivity {
                 adapter.notifyDataSetChanged();
             }
         });
+    }
+
+    private void initHoanThanhThanhToan(String thongTinThongBao){
+        dbRef.removeValue();
+        dbRef = FirebaseDatabase.getInstance(Param.firebaseURL).getReference("ban").child(nhaHangID+"_dsBan").child(maBan);
+        dbRef.child("trangThai").setValue(Param.TRONG);
+        dbRef.child("maNV").setValue("");
+        Toast.makeText(this,thongTinThongBao,Toast.LENGTH_SHORT).show();
+        startActivity(new Intent(this, NhanVienMainActivity.class));
+        finish();
+    }
+
+    private void initThanhToanBangQR(){
+        DialogQrThanhToanBinding qrThanhToanBinding = DialogQrThanhToanBinding.inflate(getLayoutInflater());
+        Dialog dialog = new Dialog(this);
+        dialog.setContentView(qrThanhToanBinding.getRoot());
+
+        String tongTien = binding.tvTongTien.getText().toString();
+        String url = "https://img.vietqr.io/image/HDB-0977979389-print.png?amount="+tongTien+"&addInfo="+maBan + "thanh toan don " + maDonHang;
+        Glide.with(this).asBitmap().load(url).into(qrThanhToanBinding.imvQR);
+        dialog.show();
+
+        qrThanhToanBinding.btnHoanThanh.setOnClickListener(view -> {
+            initHoanThanhThanhToan("Đã xác nhận thanh toán và yêu cầu nhà hàng cập nhật trạng thái ");
+        });
+
     }
 }

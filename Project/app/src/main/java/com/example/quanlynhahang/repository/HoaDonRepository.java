@@ -4,6 +4,8 @@ import com.example.quanlynhahang.model.HoaDon;
 import com.example.quanlynhahang.retrofit.DonHangAPI;
 import com.example.quanlynhahang.retrofit.HoaDonAPI;
 
+import java.util.List;
+
 import io.reactivex.rxjava3.core.Single;
 
 public class HoaDonRepository {
@@ -29,5 +31,19 @@ public class HoaDonRepository {
 
     public Single<HoaDon> taoHoaDon(int maDonHang, int maNhanVien, int maNhaHang, int tongTien, String phuongThuc) {
         return hoaDonAPI.taoHoaDon(maDonHang, maNhanVien, maNhaHang, tongTien, phuongThuc);
+    }
+
+    public Single<List<HoaDon>> layDSTheoNV(int manv) {
+        return hoaDonAPI.layDSTheoNV(manv);
+    }
+
+    public Single<List<HoaDon>> layDSTheoNH(int manh) {
+        return hoaDonAPI.layDSTheoNH(manh);
+    }
+    public Single<HoaDon> layHoaDonTheoID(int id) {
+        return hoaDonAPI.layHoaDonTheoID(id);
+    }
+    public Single<HoaDon> capNhatHoaDon(HoaDon hoaDon) {
+        return hoaDonAPI.capNhatHoaDon(hoaDon);
     }
 }

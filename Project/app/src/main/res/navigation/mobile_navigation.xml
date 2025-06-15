@@ -33,5 +33,10 @@
         android:name="com.example.quanlynhahang.view.nhahang.QuanLyMonAn.QuanLyMonAnFragment"
         android:label="Quản lý món ăn"
         tools:layout="@layout/fragment_quan_ly_mon_an" />
+    <fragment
+        android:id="@+id/nav_hoa_don"
+        android:name="com.example.quanlynhahang.view.nhahang.HoaDon.HoaDonFragment"
+        android:label="Hoá đơn"
+        tools:layout="@layout/fragment_hoa_don" />
 
 </navigation>

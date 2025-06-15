@@ -101,12 +101,14 @@ public class DonHangFragment extends Fragment {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if(snapshot.exists() && snapshot.getChildrenCount() > 0){
                     DataSnapshot maDonHangSnap = snapshot.child("maDonHang");
-                    int maDonHang = Integer.parseInt(String.valueOf(maDonHangSnap.getValue()));
-                    if(!maDonHangSnap.exists() || maDonHang != 0){
-                        donHangViewModel.getDsMonAnTrongDonHang(maDonHang);
-                    }
-                    else {
-
+                    if(maDonHangSnap.exists() && maDonHangSnap.getValue() != null){
+                        int maDonHang = Integer.parseInt(String.valueOf(maDonHangSnap.getValue()));
+                        if(!maDonHangSnap.exists() || maDonHang != 0){
+                            donHangViewModel.getDsMonAnTrongDonHang(maDonHang);
+                        }
+                        else {
+                            Toast.makeText(requireContext(), "Không có đơn hàng nào", Toast.LENGTH_SHORT).show();
+                        }
                     }
                 }
             }

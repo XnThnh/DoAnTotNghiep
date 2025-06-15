@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/_10sdp"
+    android:orientation="vertical"
+    android:layout_marginBottom="@dimen/_10sdp"
+    android:background="@drawable/bg_radius_16_stroke_ff931c">
+
+    <LinearLayout
+        android:id="@+id/llTenNhanVien"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nhân viên phục vụ : "
+            android:fontFamily="@font/sf_pro_display_600"
+            android:includeFontPadding="false"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvTenNhanVien"
+            android:fontFamily="@font/sf_pro_display_600"
+            android:includeFontPadding="false"/>
+    </LinearLayout>
+
+   <LinearLayout
+       android:layout_marginTop="@dimen/_10sdp"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:orientation="horizontal">
+       <TextView
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text="Ngày thanh toán : "
+           android:fontFamily="@font/sf_pro_display_600"
+           android:includeFontPadding="false"
+           />
+       <TextView
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:id="@+id/tvNgayThanhToan"
+           android:fontFamily="@font/sf_pro_display_600"
+           android:includeFontPadding="false"/>
+   </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Thông tin bàn : "
+            android:fontFamily="@font/sf_pro_display_600"
+            android:includeFontPadding="false"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvBan"
+            android:fontFamily="@font/sf_pro_display_600"
+            android:includeFontPadding="false"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Phương thức thanh toán : "
+            android:fontFamily="@font/sf_pro_display_600"
+            android:includeFontPadding="false"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvPhuongThucThanhToan"
+            android:fontFamily="@font/sf_pro_display_600"
+            android:includeFontPadding="false"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tổng tiền : "
+            android:fontFamily="@font/sf_pro_display_600"
+            android:includeFontPadding="false"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvTongTien"
+            android:fontFamily="@font/sf_pro_display_600"
+            android:includeFontPadding="false"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Trạng thái thanh toán : "
+            android:fontFamily="@font/sf_pro_display_600"
+            android:includeFontPadding="false"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvTrangThai"
+            android:fontFamily="@font/sf_pro_display_600"
+            android:includeFontPadding="false"/>
+    </LinearLayout>
+
+</LinearLayout>
